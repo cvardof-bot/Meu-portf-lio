@@ -1,0 +1,678 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Carlos Eduardo Portfólio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800&display=swap">
+<style>
+/* Conceito: palco preto como o portfólio em PDF, tipografia extended gigante, peças 3D flutuando no hero e saindo dos cards de branding, posts em carrosséis estilo coverflow. */
+@font-face{font-family:"Helonik Extended";font-weight:700;font-style:normal;font-display:swap;
+  src:local("Helonik Extended Bold"),local("Helonik-ExtendedBold"),local("Helonik Extended"),local("HelonikExtended-Bold");}
+:root{
+  --bg:#0b0b0c;
+  --bg-2:#141416;
+  --line:#2a2a2d;
+  --fg:#f5f2ec;
+  --muted:#a29e97;
+  --accent:#d6916b;
+  --paper:#ffffff;
+  --paper-ink:#1a1a1a;
+  --font:"Helonik Extended","Unbounded","Arial Black",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:14px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:700;text-transform:uppercase;text-wrap:balance}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.logo{font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em}
+.nav ul{display:flex;gap:clamp(12px,3vw,32px);list-style:none;margin:0;padding:0;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--fg)}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+
+/* hero */
+.hero{padding-block:clamp(28px,5vw,64px) 0;position:relative;overflow:hidden}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.eyebrow b{color:var(--accent);font-weight:700}
+.hero h1{font-size:clamp(40px,12.4vw,196px);line-height:.88;letter-spacing:-.035em;margin-top:clamp(14px,2vw,28px)}
+.hero h1 span{display:block}
+.hero h1 span:last-child{padding-left:clamp(0px,9vw,150px)}
+.hero-sub{max-width:44ch;margin-top:clamp(16px,2.4vw,32px);color:var(--muted);font-size:clamp(12px,1.2vw,14px);position:relative;z-index:3}
+/* peças 3D ligadas à rolagem: --p vai de 1 (entrando por baixo) a -1 (saindo por cima) */
+.s3d{transform:perspective(1200px) translate3d(0,calc(var(--p,0) * var(--ty,50px)),var(--z,0px)) rotateX(calc(var(--rx,0deg) + var(--p,0) * var(--drx,12deg))) rotateY(calc(var(--ry,0deg) + var(--p,0) * var(--dry,40deg))) rotateZ(calc(var(--rz,0deg) + var(--p,0) * var(--drz,8deg)));will-change:transform;filter:drop-shadow(0 28px 26px rgba(0,0,0,.55))}
+.scrollcue{margin-top:clamp(28px,5vw,64px);display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.scrollcue i{display:block;width:56px;height:1px;background:var(--muted)}
+
+/* números */
+.nums{border-block:1px solid var(--line);margin-top:clamp(8px,2vw,24px)}
+.nums .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.num{padding:clamp(20px,3vw,40px) clamp(8px,2vw,28px);display:flex;flex-direction:column;gap:6px;border-left:1px solid var(--line)}
+.num:first-child{border-left:0;padding-left:0}
+.num strong{font-size:clamp(24px,6.2vw,96px);line-height:1;letter-spacing:-.04em;font-weight:800;font-variant-numeric:tabular-nums}
+.num span{font-size:clamp(9px,1.2vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* seções */
+section{padding-block:clamp(56px,9vw,128px)}
+.sec-h{font-size:clamp(26px,5.4vw,76px);line-height:.95;letter-spacing:-.03em}
+.sec-h i{font-style:normal;color:var(--accent)}
+.sec-p{color:var(--muted);max-width:52ch;margin-top:16px}
+
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:center;margin-top:clamp(28px,4vw,56px)}
+.photo-wrap{perspective:900px;max-width:440px;width:100%;justify-self:center}
+.photo{aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--bg-2);transition:transform .25s ease-out;transform-style:preserve-3d;box-shadow:0 40px 70px -30px #000,0 0 0 1px var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-txt{display:flex;flex-direction:column;gap:18px;font-size:clamp(12px,1.15vw,14px);line-height:1.8;color:#d9d5ce}
+.about-txt p{font-weight:400}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px}
+.fact{background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:4px}
+.fact small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.fact b{font-size:12px;font-weight:700;line-height:1.4}
+
+/* skills */
+.skills{background:var(--bg-2);border-block:1px solid var(--line)}
+
+.sk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,5vw,72px) clamp(28px,4vw,64px);margin-top:clamp(32px,4vw,56px)}
+.sk-group{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sk-head h3{font-size:clamp(15px,1.7vw,22px);line-height:1.1;letter-spacing:-.01em}
+.sk-head h3 i{font-style:normal;color:var(--accent)}
+.sk-head p{color:var(--muted);font-size:12px;line-height:1.75;margin-top:10px;max-width:58ch;font-weight:400}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:14px 12px;perspective:900px}
+.tile{display:flex;flex-direction:column;gap:9px;align-items:center;min-width:0;transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:rotateX(10deg) rotateY(-14deg) translateZ(18px)}
+.tile img{width:100%;aspect-ratio:1;border-radius:18px;display:block;box-shadow:0 16px 26px -14px #000}
+.tile span{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.35}
+.tile span.lc{text-transform:none;letter-spacing:.02em;font-size:11px}
+.tile em{display:block;font-style:normal;color:var(--accent);font-size:9px;letter-spacing:.1em}
+.sk-extra{margin-top:clamp(32px,4vw,56px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sk-extra b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.sk-extra span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--fg)}
+
+/* branding */
+.brands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px) clamp(16px,3vw,40px);margin-top:clamp(56px,7vw,96px)}
+.brand{position:relative}
+.brand-card{width:100%;border:0;font:inherit;cursor:pointer;position:relative;background:var(--paper);color:var(--paper-ink);border-radius:6px;aspect-ratio:5/4;display:grid;place-items:center;padding:clamp(16px,4vw,48px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;box-shadow:0 30px 60px -30px #000}
+.brand-card:hover{transform:translateY(-6px);box-shadow:0 40px 70px -30px #000}
+.brand-card .hint{position:absolute;left:clamp(12px,2vw,20px);bottom:clamp(10px,2vw,18px);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6d6a66;display:flex;gap:8px;align-items:center}
+.brand-card .hint b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--paper-ink);color:var(--paper);font-size:14px;line-height:1}
+.brand-card img.lg{max-width:72%;max-height:78%;object-fit:contain;pointer-events:none}
+.brand .mock{position:absolute;height:auto;pointer-events:none}
+.brand-meta{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-top:clamp(28px,4vw,48px);flex-wrap:wrap}
+.brand-meta h3{font-size:clamp(14px,1.8vw,22px)}
+.brand-meta p{color:var(--muted);font-size:12px;max-width:34ch}
+
+/* captação */
+.av{display:flex;flex-direction:column;gap:clamp(56px,9vw,128px);margin-top:clamp(40px,6vw,80px)}
+.av-row{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,80px);align-items:center}
+.av-row.rev{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.av-row.rev .av-fig{order:2}
+.av-fig{display:grid;place-items:center;padding:clamp(8px,2vw,24px)}
+.av-fig img{width:min(100%,640px);height:auto;display:block}
+.av-fig.tall img{width:min(100%,400px)}
+.av-fig .ext-wrap{filter:drop-shadow(0 34px 30px rgba(0,0,0,.6));width:min(100%,640px)}
+.av-fig.tall .ext-wrap{width:min(100%,400px)}
+.av-fig .ext.s3d{position:relative;width:100%;aspect-ratio:var(--ar);filter:none;transform-style:preserve-3d}
+.av-fig .ext.s3d img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;display:block;pointer-events:none}
+.av-fig .ext.s3d img.edge{filter:brightness(.42) contrast(1.1)}
+.av-fig .ext.s3d img.mid{filter:brightness(.58)}
+.cam-wrap{aspect-ratio:1/.92;position:relative}
+.s3d.cam{position:absolute;inset:0;transform-style:preserve-3d;filter:none;will-change:transform;transform:perspective(1500px) translate3d(0,calc(var(--p,0) * var(--ty,40px)),0) rotateX(calc(var(--rx,0deg) + var(--p,0) * var(--drx,0deg))) rotateY(calc(var(--ry,0deg) + var(--p,0) * var(--dry,0deg))) rotateZ(calc(var(--rz,0deg) + var(--p,0) * var(--drz,0deg)))}
+.cam-in{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;transform:scale(var(--s,1))}
+.cf{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-color:#0e0f10;background-size:100% 100%;background-repeat:no-repeat}
+.cf.rubber{background-image:radial-gradient(rgba(255,255,255,.16) .7px,transparent 1px),linear-gradient(90deg,#222325,#121314 55%,#1a1b1d);background-size:3px 3px,100% 100%}
+.cf.f-bot{background-image:linear-gradient(#0d0e0f,#070708);filter:brightness(.7)}
+.cf.f-side-r{filter:brightness(.92)}
+.cf.f-lug{background-color:#9a9ea4}
+.cf.f-lug.slot::after{content:"";position:absolute;left:24%;top:20%;width:52%;height:60%;border-radius:999px;background:#0e0f10}
+.cf.f-inner{filter:brightness(.7)}
+.cf.f-side-l{filter:brightness(.85)}
+.cf.f-cap{border-radius:50%}
+.cf.f-fur{background-color:transparent;backface-visibility:visible;transform-origin:50% 100%;filter:none}
+.av-txt{display:flex;flex-direction:column;gap:16px}
+.av-txt h3{font-size:clamp(18px,2.6vw,34px);line-height:1.05;letter-spacing:-.02em}
+.av-txt h3 i{font-style:normal;color:var(--accent)}
+.av-txt p{font-size:clamp(12px,1.15vw,14px);line-height:1.8;color:#d9d5ce;font-weight:400;max-width:58ch}
+.av-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.av-tags span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted)}
+
+/* social */
+.social{background:var(--bg-2);border-top:1px solid var(--line);overflow:hidden}
+.social-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;position:relative}
+.floatpost{position:absolute;right:2%;top:-40px;width:clamp(90px,13vw,190px);height:auto;pointer-events:none;--z:60px;--rx:-6deg;--ry:-18deg;--rz:6deg;--ty:40px}
+.floatpost[hidden]{display:none}
+.social.photos{background:var(--bg-2);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(24px,3vw,40px)}
+.tab{font:inherit;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.tab em{font-style:normal;font-size:10px;opacity:.7}
+.tab:hover{color:var(--fg);border-color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.cap{display:flex;justify-content:space-between;gap:16px;margin-top:clamp(24px,3vw,36px);color:var(--muted);font-size:12px;flex-wrap:wrap}
+.cap b{color:var(--fg)}
+.carousel{position:relative;margin-top:20px}
+.track{display:flex;gap:clamp(12px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-block:36px 44px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));scroll-padding-left:max(16px,env(safe-area-inset-left,0px));cursor:grab;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.track.drag{scroll-snap-type:none;cursor:grabbing;scroll-behavior:auto}
+.item{flex:0 0 auto;height:var(--h,460px);aspect-ratio:var(--r,4/5);scroll-snap-align:start;border:0;padding:0;background:var(--bg);border-radius:10px;overflow:hidden;cursor:pointer;box-shadow:0 30px 50px -24px #000,0 0 0 1px var(--line);transform-origin:50% 50%;will-change:transform}
+.item img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none}
+.ctrl{display:flex;align-items:center;gap:16px;padding-inline:max(16px,env(safe-area-inset-left,0px));max-width:1360px;margin:0 auto}
+.bar{flex:1;height:2px;background:var(--line);position:relative;overflow:hidden;border-radius:2px}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:20%;background:var(--accent);transition:transform .1s linear}
+.arrow{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;display:grid;place-items:center;font:inherit;font-size:18px}
+.arrow:hover{border-color:var(--accent);color:var(--accent)}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* contato */
+.contact{text-align:left}
+.contact h2{font-size:clamp(34px,10vw,150px);line-height:.9;letter-spacing:-.04em}
+.contact h2 span{color:var(--accent)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:clamp(28px,4vw,48px)}
+.cta{font:inherit;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--fg);color:var(--bg);padding:18px 28px;border-radius:999px;border:0;cursor:pointer;display:inline-flex;gap:10px;align-items:center;transition:transform .2s}
+.cta:hover{transform:translateY(-3px)}
+.cta.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.cta.ghost:hover{border-color:var(--accent)}
+.phone{margin-top:20px;color:var(--muted);font-size:12px}
+.phone b{color:var(--fg);user-select:all}
+footer{border-top:1px solid var(--line);padding-block:24px 32px;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(5,5,6,.94);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none}
+.lb img{max-width:min(94vw,1180px);max-height:84vh;border-radius:8px;box-shadow:0 40px 80px #000}
+.lb .x,.lb .p,.lb .n{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit;font-size:18px;cursor:pointer}
+.lb .x{top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.lb .p{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .n{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb .c{position:absolute;bottom:max(16px,env(safe-area-inset-bottom,0px));font-size:11px;letter-spacing:.12em;color:var(--muted)}
+
+@media (max-width:820px){
+  .sk-grid{grid-template-columns:minmax(0,1fr)}
+  .av-row,.av-row.rev{grid-template-columns:minmax(0,1fr)}
+  .av-row.rev .av-fig{order:0}
+  .about{grid-template-columns:minmax(0,1fr)}
+  .brands{grid-template-columns:minmax(0,1fr)}
+  .brand-card{aspect-ratio:4/3}
+  .item{height:calc(var(--h,460px) * .78)}
+  .nav ul{gap:12px}
+  .nav ul li:nth-child(n+4){display:none}
+  .floatpost{width:76px;top:-20px}
+  .arrow{width:42px;height:42px}
+  .facts{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .s3d{transform:perspective(1200px) translate3d(0,0,var(--z,0px)) rotateY(var(--ry,0deg)) rotateZ(var(--rz,0deg))}
+  .tile,.photo,.brand-card,.cta{transition:none}
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#topo">CARLOS EDUARDO©</a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#captacao">Captação</a></li>
+      <li><a href="#fotos">Fotos</a></li>
+      <li><a href="#branding">Branding</a></li>
+      <li><a href="#social">Social media</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+  <div class="prog" id="prog"></div>
+</header>
+
+<main id="topo">
+  <section class="hero" style="padding-bottom:clamp(32px,5vw,64px)">
+    <div class="wrap">
+      <div class="eyebrow"><b>Portfólio 2026©</b><span>Marketing digital</span><span>Social media</span><span>Branding</span></div>
+      <h1><span>Carlos</span><span>Eduardo</span></h1>
+      <p class="hero-sub">Conteúdo, identidade visual e produção audiovisual para marcas, clínicas e comércios de São Paulo.</p>
+      <div class="scrollcue"><i></i>Role para explorar</div>
+    </div>
+  </section>
+
+  <div class="nums">
+    <div class="wrap">
+      <div class="num"><strong data-to="200">+200</strong><span>Logos criados</span></div>
+      <div class="num"><strong data-to="500">+500</strong><span>Branding desenvolvidos</span></div>
+      <div class="num"><strong data-to="600">+600</strong><span>Perfis gerenciados</span></div>
+    </div>
+  </div>
+
+  <section id="sobre">
+    <div class="wrap">
+      <h2 class="sec-h">Quem sou eu<i>:</i></h2>
+      <div class="about">
+        <div class="photo-wrap"><div class="photo" id="photo"><img src="img/carlos.webp" alt="Retrato em preto e branco de Carlos Eduardo"></div></div>
+        <div class="about-txt">
+          <p>Sou um profissional criativo e versátil, com experiência prática na criação de conteúdo digital e produção audiovisual, sempre focado em gerar valor real para marcas e negócios. Atuo principalmente no desenvolvimento de estratégias e materiais para redes sociais, com domínio de ferramentas como Photoshop e outros softwares de design, além de experiência em captação de imagem com equipamentos próprios, como iPhone, iluminação e estabilização.</p>
+          <p>Tenho facilidade em transformar ideias em conteúdos dinâmicos, seja para empresas locais, clínicas ou comércios, buscando sempre fortalecer a identidade visual e a presença digital dos meus clientes. Também possuo vivência com trabalhos autônomos, o que me trouxe uma visão mais estratégica sobre comunicação, vendas e posicionamento.</p>
+          <p>Estou em constante evolução, buscando aprimorar minhas habilidades técnicas e criativas para entregar resultados cada vez mais profissionais e eficientes.</p>
+          <div class="facts">
+            <div class="fact"><small>Formação</small><b>Marketing, Uninove · 2018–2020</b></div>
+            <div class="fact"><small>Agência</small><b>Visarf, proprietário e diretor executivo · 2020–2025</b></div>
+            <div class="fact"><small>Tráfego pago</small><b>Meta Ads e Google Ads</b></div>
+            <div class="fact"><small>Base</small><b>São Paulo, SP</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <h2 class="sec-h">Software skills<i>:</i></h2>
+      <p class="sec-p">Ferramentas que uso no dia a dia, de redes sociais e design a tráfego pago, automação e inteligência artificial.</p>
+      <div class="sk-grid" id="skills-grid"></div>
+      <div class="sk-extra"><b>Também uso</b><span>Google Analytics</span><span>Google Trends</span></div>
+    </div>
+  </section>
+
+  <section id="captacao">
+    <div class="wrap">
+      <h2 class="sec-h">Câmeras e captação mobile<i>.</i></h2>
+      <div class="av">
+        <div class="av-row">
+          <div class="av-fig"><div class="ext-wrap cam-wrap" id="camwrap"><div class="s3d cam" id="cam" role="img" aria-label="Câmera Sony ZV-E10 em 3D, com 115,2 por 64,2 por 44,8 milímetros" style="--rx:-12deg;--ry:26deg;--rz:0deg;--ty:50px;--drx:10deg;--dry:48deg;--drz:0deg"></div></div></div>
+          <div class="av-txt">
+            <h3>Câmeras e produção audiovisual<i>.</i></h3>
+            <p>Atuo com câmeras e produção audiovisual, operando equipamentos para criar materiais profissionais voltados às redes sociais. Domino a captação de fotos e vídeos, o enquadramento, a iluminação e as configurações de gravação, sempre buscando a melhor qualidade possível em cada projeto.</p>
+            <div class="av-tags"><span>Foto e vídeo</span><span>Enquadramento</span><span>Iluminação</span><span>Configurações de gravação</span></div>
+          </div>
+        </div>
+        <div class="av-row rev">
+          <div class="av-fig tall"><div class="ext-wrap"><div class="s3d ext" data-src="img/gimbal.webp" data-alt="Celular em gimbal com bastão de LED" data-layers="34" data-depth="46" style="--ar:573/760;--rx:3deg;--ry:-14deg;--rz:4deg;--z:60px;--ty:70px;--dry:-50deg;--drz:8deg"></div></div></div>
+          <div class="av-txt">
+            <h3>Captação mobile para redes sociais<i>.</i></h3>
+            <p>A captação mobile para redes sociais é uma das minhas especialidades: uso o celular como principal ferramenta audiovisual, com o apoio de gimbal para estabilizar a imagem, bastão de LED para iluminação e outros acessórios que elevam a qualidade das gravações. Crio vídeos e fotos para Reels, Stories e demais formatos digitais, explorando diferentes ângulos, enquadramentos, movimentos de câmera e iluminação para entregar materiais dinâmicos, criativos e alinhados à identidade visual de cada marca.</p>
+            <div class="av-tags"><span>Reels</span><span>Stories</span><span>Gimbal</span><span>Bastão de LED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social photos" id="fotos">
+    <div class="wrap">
+      <h2 class="sec-h">Fotos<i>.</i></h2>
+      <div class="cap"><span class="capT"></span><span class="capC"></span></div>
+    </div>
+    <div class="carousel">
+      <div class="track" tabindex="0" aria-label="Carrossel de fotos"></div>
+    </div>
+    <div class="ctrl">
+      <button class="arrow prev" aria-label="Anterior">←</button>
+      <div class="bar"><i class="barI"></i></div>
+      <button class="arrow next" aria-label="Próximo">→</button>
+    </div>
+  </section>
+
+  <section id="branding">
+    <div class="wrap">
+      <h2 class="sec-h">Branding<i>.</i> Logos e aplicações</h2>
+      <p class="sec-p">Marcas para clínicas e estéticas. Clique no logo para abrir o branding completo, com a explicação da identidade e as aplicações.</p>
+      <div class="brands">
+        <article class="brand">
+          <button class="brand-card" type="button" aria-label="Abrir o branding completo de Áurea Odontologia"><img class="lg" src="img/logo-aurea.webp" alt="Logo Áurea Odontologia"><span class="hint"><b>+</b>Ver branding</span></button>
+          <div class="brand-meta"><h3>Áurea Odontologia</h3><p>Sol radiante em traços finos e tipografia elegante em tons terrosos.</p></div>
+        </article>
+        <article class="brand">
+          <button class="brand-card" type="button" aria-label="Abrir o branding completo de Duarte Maison Estética"><img class="lg" src="img/logo-duarte.webp" alt="Logo Duarte Maison Estética"><span class="hint"><b>+</b>Ver branding</span></button>
+          <div class="brand-meta"><h3>Duarte Maison</h3><p>Monograma circular de linhas fluidas, aplicado em papel de presente e calendário de mesa.</p></div>
+        </article>
+        <article class="brand">
+          <button class="brand-card" type="button" aria-label="Abrir o branding completo de Nayla Muniz Estética"><img class="lg" src="img/logo-nayla.webp" alt="Logo Nayla Muniz Estética"><span class="hint"><b>+</b>Ver branding</span></button>
+          <div class="brand-meta"><h3>Nayla Muniz Estética</h3><p>Monograma clássico e paleta verde, aplicado no perfil do Instagram e no caderno.</p></div>
+        </article>
+        <article class="brand">
+          <button class="brand-card" type="button" aria-label="Abrir o branding completo de Marina Moraes"><img class="lg" src="img/logo-marina.webp" alt="Logo Marina Moraes Estética Facial e Corporal"><span class="hint"><b>+</b>Ver branding</span></button>
+          <div class="brand-meta"><h3>Marina Moraes</h3><p>Borboleta em linhas simples para estética facial e corporal, em terracota.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="social" id="social">
+    <div class="wrap">
+      <div class="social-head">
+        <h2 class="sec-h">Social media<i>:</i><br>Posts em carrossel</h2>
+        <img class="floatpost s3d" src="img/postmock.webp" alt="">
+      </div>
+      <div class="tabs" role="tablist" aria-label="Clientes"></div>
+      <div class="cap"><span class="capT"></span><span class="capC"></span></div>
+    </div>
+    <div class="carousel">
+      <div class="track" tabindex="0" aria-label="Carrossel de posts"></div>
+    </div>
+    <div class="ctrl">
+      <button class="arrow prev" aria-label="Anterior">←</button>
+      <div class="bar"><i class="barI"></i></div>
+      <button class="arrow next" aria-label="Próximo">→</button>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <h2>Obrigado<br>por ver <span>até aqui</span></h2>
+      <div class="cta-row">
+        <a class="cta" href="https://wa.me/5511993399603" target="_blank" rel="noopener">Chamar no WhatsApp →</a>
+        <button class="cta ghost" id="copy" type="button">Copiar número</button>
+      </div>
+      <p class="phone">Contato: <b>11 99339-9603</b></p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Carlos Eduardo ©</span><span>Portfólio 2026</span><span>São Paulo, SP</span></div></footer>
+
+<div class="lb" id="lb" hidden>
+  <button class="x" id="lbx" aria-label="Fechar">✕</button>
+  <button class="p" id="lbp" aria-label="Anterior">←</button>
+  <img id="lbi" alt="">
+  <button class="n" id="lbn" aria-label="Próximo">→</button>
+  <div class="c" id="lbc"></div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- câmera em 3D real: Sony ZV-E10, 115,2 x 64,2 x 44,8 mm ---------- */
+  (function buildCamera(){
+    var root = document.getElementById('cam'); if(!root) return;
+    var M = 5;                                   /* px por mm */
+    var W = 115.2, H = 64.2, D = 44.8, GW = 36, FD = 32.4;  /* corpo, empunhadura (36 mm) e corpo sem ela (32,4 mm de profundidade, medido na foto da lateral) */
+    var inner = document.createElement('div'); inner.className = 'cam-in'; root.appendChild(inner);
+    function T(x,y,z){ return 'translate3d('+(x*M).toFixed(2)+'px,'+(y*M).toFixed(2)+'px,'+(z*M).toFixed(2)+'px)'; }
+    function face(wmm,hmm,tf,cls,bg,extra){
+      var d = document.createElement('div'), w = wmm*M, h = hmm*M;
+      d.className = 'cf ' + (cls||'');
+      d.style.cssText = 'width:'+w.toFixed(2)+'px;height:'+h.toFixed(2)+'px;left:'+(-w/2).toFixed(2)+'px;top:'+(-h/2).toFixed(2)+'px;transform:'+tf+';'+(bg?'background-image:url('+bg+');':'')+(extra||'');
+      inner.appendChild(d); return d;
+    }
+    var wm = W-GW, xm = (W-GW)/2 - (W/2) + GW + 0, xg = -W/2 + GW/2, zm = -D/2 + FD/2, zf = -D/2 + FD;
+    xm = -W/2 + GW + wm/2;
+    /* frente */
+    face(wm, H, T(xm,0,zf),            'f-front','img/cam-front.webp');
+    face(GW, H, T(xg,0,D/2),           'f-front','img/cam-grip.webp');
+    /* traseira (foto do display) */
+    face(W,  H, T(0,0,-D/2)+' rotateY(180deg)', 'f-back','img/cam-back.webp');
+    /* topo */
+    face(wm, FD, T(xm,-H/2,zm)+' rotateX(90deg)', 'f-top','img/cam-top.webp');
+    face(GW, D,  T(xg,-H/2,0)+' rotateX(90deg)',  'f-top','img/cam-topgrip.webp');
+    /* base, laterais e degrau da empunhadura */
+    face(wm, FD, T(xm,H/2,zm)+' rotateX(-90deg)', 'f-bot');
+    face(GW, D,  T(xg,H/2,0)+' rotateX(-90deg)',  'f-bot');
+    face(FD, H,  T(W/2,0,zm)+' rotateY(90deg)',   'f-side-r','img/cam-side.webp');
+    face(D,  H,  T(-W/2,0,0)+' rotateY(-90deg)',  'f-side-l rubber');
+    face(D-FD, H, T(-W/2+GW,0,(zf+D/2)/2)+' rotateY(90deg)', 'f-inner rubber');
+    /* argolas da alça (fotos de frente e de topo): 5 mm para fora, a 4,5 mm do topo */
+    function lug(sx, zc, len){
+      var t = 1.2, w = 5, y0 = -H/2 + 4.5, xc = sx*(W/2 + w/2 - 0.3);
+      var sty = 'background-image:linear-gradient(90deg,#d5d8dc,#8b9096);backface-visibility:visible;';
+      face(w, len, T(xc,y0,zc)+' rotateX(90deg)', 'f-lug slot', null, sty);
+      face(w, len, T(xc,y0+t,zc)+' rotateX(90deg)', 'f-lug', null, sty+'filter:brightness(.7);');
+      face(len, t, T(sx*(W/2+w-0.3),y0+t/2,zc)+' rotateY('+(sx>0?90:-90)+'deg)', 'f-lug', null, sty);
+    }
+    lug(1, -4.4, 10); lug(-1, -12, 12);
+    /* lente Sony E PZ 16-50 mm f/3.5-5.6 OSS (oficial): Ø 64,7 mm; 29,9 mm de comprimento a partir do mount (recolhida) + ~7,6 mm do anel do mount que sai do corpo = 37,5 mm; filtro 40,5 mm */
+    var xl = -W/2 + (700-38)/987*W, yl = -(H/2 - (548-283)/582*H), r = 32.35, Lc = 37.5, N = 44;
+    var Wt = 227, R = Wt/2, circ = 2*Math.PI*r*M/N, Lpx = Lc*M;
+    for (var i=0;i<N;i++){
+      var phi = i*360/N, rad = phi*Math.PI/180, sn = Math.sin(rad), cs = Math.cos(rad);
+      var sw = Math.max(1.5, R*Math.abs(cs)*(2*Math.PI/N)), xc = Math.min(Wt - sw/2, Math.max(sw/2, Wt/2 + R*sn)), fw = circ + 1;
+      var bright = 0.28 + 0.72*Math.pow((1+cs)/2, 1.2);
+      var smooth = Math.abs(sn) > 0.72 || cs < 0;
+      var gv = Math.round(Math.min(1, bright*(smooth?1.15:1))*255);
+      var d = face(fw/M, Lc, T(xl,yl,zf+Lc/2)+' rotateZ('+phi.toFixed(2)+'deg) translateY('+(-r*M).toFixed(2)+'px) rotateX(90deg)', 'f-lens',
+        smooth ? 'img/cam-barrel-avg.webp' : 'img/cam-barrel.webp',
+        (smooth ? 'background-size:100% '+Lpx+'px;background-position:0 0;' : 'background-size:'+(Wt*fw/sw).toFixed(1)+'px '+Lpx+'px;background-position:'+(-(xc-sw/2)/sw*fw).toFixed(1)+'px 0;')
+        + 'background-color:rgb('+gv+','+gv+','+gv+');background-blend-mode:multiply;');
+    }
+    face(2*r, 2*r, T(xl,yl,zf+Lc), 'f-cap', 'img/cam-lens.webp');
+    /* microfone peludo: sempre voltado para a tela, preso ao topo */
+    var fk = 8.57, fw2 = 510/fk, fh2 = 277/fk;
+    var fur = document.createElement('div'); fur.className = 'cf f-fur';
+    var inv = 'rotateZ(calc(-1 * (var(--rz,0deg) + var(--p,0) * var(--drz,0deg)))) rotateY(calc(-1 * (var(--ry,0deg) + var(--p,0) * var(--dry,0deg)))) rotateX(calc(-1 * (var(--rx,0deg) + var(--p,0) * var(--drx,0deg))))';
+    fur.style.cssText = 'width:'+(fw2*M).toFixed(1)+'px;height:'+(fh2*M).toFixed(1)+'px;left:'+(-fw2*M/2).toFixed(1)+'px;top:'+(-fh2*M).toFixed(1)+'px;background-image:url(img/cam-fur.webp);transform:'+T(10.3,-H/2+1.5,-6)+' '+inv+';';
+    inner.appendChild(fur);
+    /* escala conforme a largura disponível */
+    var wrap = document.getElementById('camwrap');
+    function fit(){ root.style.setProperty('--s', (wrap.clientWidth/760).toFixed(4)); }
+    fit(); window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(wrap);
+  })();
+
+  /* ---------- extrusão: empilha camadas em profundidade para dar espessura ---------- */
+  document.querySelectorAll('.ext').forEach(function(el){
+    var n = +el.dataset.layers || 20, depth = +el.dataset.depth || 50, html = '';
+    for (var i=0;i<n;i++){
+      var z = (-depth/2 + i*depth/(n-1)).toFixed(2);
+      var front = i===n-1, cls = front ? 'front' : (i<n*0.55 ? 'edge' : 'mid');
+      html += '<img class="'+cls+'" src="'+el.dataset.src+'" alt="'+(front?el.dataset.alt:'')+'"'+(front?'':' aria-hidden="true"')+' style="transform:translateZ('+z+'px)" draggable="false">';
+    }
+    el.innerHTML = html;
+  });
+
+  /* ---------- peças 3D ligadas à barra de rolagem ---------- */
+  var prog = document.getElementById('prog');
+  var s3d = Array.prototype.slice.call(document.querySelectorAll('.s3d')).map(function(el){ return {el:el, cur:0, tgt:0}; });
+  var vh = window.innerHeight, running = false;
+  function measure(){
+    vh = window.innerHeight;
+    s3d.forEach(function(o){
+      var r = o.el.getBoundingClientRect();
+      if (r.width === 0) { o.tgt = 0; return; }
+      var c = r.top + r.height/2;
+      o.tgt = Math.max(-1.2, Math.min(1.2, (c - vh/2) / (vh/2 + r.height/2)));
+    });
+    var max = document.documentElement.scrollHeight - vh;
+    prog.style.transform = 'scaleX(' + (max>0 ? Math.min(1, window.scrollY/max) : 0) + ')';
+  }
+  function step(){
+    var moving = false;
+    s3d.forEach(function(o){
+      var d = o.tgt - o.cur;
+      if (Math.abs(d) > 0.0008){ o.cur += d*0.14; moving = true; } else o.cur = o.tgt;
+      o.el.style.setProperty('--p', o.cur.toFixed(4));
+    });
+    if (moving) requestAnimationFrame(step); else running = false;
+  }
+  function onScroll(){ measure(); if(!reduce && !running){ running = true; requestAnimationFrame(step); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', onScroll);
+  measure();
+  if (reduce) prog.style.transition = 'none';
+  else { s3d.forEach(function(o){ o.cur = o.tgt; o.el.style.setProperty('--p', o.cur.toFixed(4)); }); }
+
+  /* ---------- contadores ---------- */
+  var nums = document.querySelectorAll('[data-to]');
+  if (!reduce){
+    var t0 = performance.now();
+    (function tick(now){
+      var p = Math.min(1,(now-t0)/1200), e = 1-Math.pow(1-p,3);
+      nums.forEach(function(n){ var v=Math.round(n.dataset.to*e); n.textContent = '+'+v; });
+      if(p<1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  /* ---------- foto com inclinação ---------- */
+  var ph = document.getElementById('photo');
+  if (!reduce){
+    ph.parentNode.addEventListener('pointermove', function(e){
+      var r = ph.getBoundingClientRect();
+      var x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+      ph.style.transform = 'rotateY('+(x*18)+'deg) rotateX('+(-y*18)+'deg)';
+    });
+    ph.parentNode.addEventListener('pointerleave', function(){ ph.style.transform=''; });
+  }
+
+  /* ---------- skills ---------- */
+  var skillGroups = [
+    {id:'soc', t:'Redes sociais', d:'Gestão estratégica de Instagram, Facebook, LinkedIn, WhatsApp, TikTok e X: planejamento, criação e publicação de conteúdos, identidade visual e análise de métricas.'},
+    {id:'des', t:'Design, vídeo e 3D', d:'Photoshop e Illustrator para artes, Premiere Pro e After Effects para vídeo e animação, Substance 3D em projetos 3D, CapCut e Canva para edições rápidas e peças gráficas.'},
+    {id:'off', t:'Escritório e organização', d:'Microsoft Office 365 com Word, Excel e PowerPoint, Teams para reuniões e equipes, Trello e Notion para organizar tarefas, prazos e projetos.'},
+    {id:'web', t:'Tráfego, automação e IA', d:'Meta Business Suite e Google Ads para analisar campanhas, Metricool e mLabs para programar publicações, WordPress e n8n em nível básico, Claude, ChatGPT e Manus para ganhar produtividade.'}
+  ];
+  var skillData = [["soc", "Instagram", "skills/soc-0.webp", ""], ["soc", "Facebook", "skills/soc-1.webp", ""], ["soc", "TikTok", "skills/soc-2.webp", ""], ["soc", "WhatsApp", "skills/soc-3.webp", ""], ["soc", "X", "skills/soc-4.webp", ""], ["soc", "LinkedIn", "skills/soc-5.webp", ""], ["des", "Photoshop", "skills/des-6.webp", ""], ["des", "Illustrator", "skills/des-7.webp", ""], ["des", "Substance 3D", "skills/des-8.webp", ""], ["des", "Canva", "skills/des-9.webp", ""], ["des", "Premiere Pro", "skills/des-10.webp", ""], ["des", "After Effects", "skills/des-11.webp", ""], ["des", "DaVinci Resolve", "skills/des-12.webp", "básico"], ["des", "CapCut", "skills/des-13.webp", ""], ["off", "Word", "skills/off-14.webp", ""], ["off", "Excel", "skills/off-15.webp", ""], ["off", "Trello", "skills/off-16.webp", ""], ["off", "PowerPoint", "skills/off-17.webp", ""], ["off", "Teams", "skills/off-18.webp", ""], ["off", "Notion", "skills/off-19.webp", ""], ["web", "WordPress", "skills/web-20.webp", "básico"], ["web", "n8n", "skills/web-21.webp", "básico"], ["web", "Claude", "skills/web-22.webp", ""], ["web", "ChatGPT", "skills/web-23.webp", ""], ["web", "Manus", "skills/web-24.webp", ""], ["web", "Google Ads", "skills/web-25.webp", ""], ["web", "Meta Business Suite", "skills/web-26.webp", ""], ["web", "Metricool", "skills/web-27.webp", ""], ["web", "mLabs", "skills/web-28.webp", ""]];
+  document.getElementById('skills-grid').innerHTML = skillGroups.map(function(g){
+    var tiles = skillData.filter(function(x){ return x[0]===g.id; }).map(function(x){
+      return '<div class="tile"><img src="'+x[2]+'" alt="Logo '+x[1]+'" loading="lazy" draggable="false"><span'+(x[1]==='n8n'||x[1]==='mLabs'?' class="lc"':'')+'>'+x[1]+(x[3]?'<em>'+x[3]+'</em>':'')+'</span></div>';
+    }).join('');
+    return '<div class="sk-group"><div class="sk-head"><h3>'+g.t+'<i>.</i></h3><p>'+g.d+'</p></div><div class="tiles">'+tiles+'</div></div>';
+  }).join('');
+
+  /* ---------- lightbox ---------- */
+  var lb=document.getElementById('lb'), lbi=document.getElementById('lbi'), lbc=document.getElementById('lbc'), li=0, lbList=[];
+  function show(k){
+    li=(k+lbList.length)%lbList.length; var it=lbList[li];
+    lbi.src=it.src; lbi.alt=it.alt;
+    lbc.textContent=it.cap+'  '+(li+1)+' / '+lbList.length;
+  }
+  function openLB(list,k){ lbList=list; show(k); lb.hidden=false; document.getElementById('lbx').focus(); }
+  function close(){ lb.hidden=true; }
+  document.getElementById('lbx').addEventListener('click', close);
+  document.getElementById('lbp').addEventListener('click', function(){ show(li-1); });
+  document.getElementById('lbn').addEventListener('click', function(){ show(li+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(lb.hidden) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') show(li-1);
+    if(e.key==='ArrowRight') show(li+1);
+  });
+  var brandList=[
+    {src:'img/brand-aurea.webp',  alt:'Branding completo da Áurea Odontologia', cap:'ÁUREA ODONTOLOGIA'},
+    {src:'img/brand-duarte.webp', alt:'Branding completo da Duarte Maison Estética', cap:'DUARTE MAISON'},
+    {src:'img/brand-nayla.webp',  alt:'Branding completo da Nayla Muniz Estética', cap:'NAYLA MUNIZ ESTÉTICA'},
+    {src:'img/brand-marina.webp', alt:'Branding completo da Marina Moraes', cap:'MARINA MORAES'}
+  ];
+  document.querySelectorAll('.brand-card').forEach(function(b,i){ b.addEventListener('click', function(){ openLB(brandList,i); }); });
+
+  /* ---------- carrosséis (posts e fotos) ---------- */
+  function range(a,b){var r=[];for(var i=a;i<=b;i++)r.push(i);return r}
+  var RATIO = {37:'1191/496',38:'1191/744',39:'1191/744'};
+  for (var q=1;q<=7;q++) RATIO['kd'+q]='1037/648';
+  function src(p){ return typeof p==='string' ? 'posts/'+p+'.webp' : 'posts/p'+(p<10?'0':'')+p+'.webp'; }
+
+  var socialGroups = [
+    {nome:'Fernandes & Castro',   sub:'Corretora de seguros · feed',            pages:range(11,18), h:480, r:'4/5'},
+    {nome:'Barbearia dos Amigos', sub:'Barbearia · feed',                       pages:range(19,26), h:480, r:'4/5'},
+    {nome:'SB Supermercado',      sub:'Ofertas, enquetes e receitas · stories', pages:range(27,36), h:540, r:'9/16'},
+    {nome:'Caravana do Dentinho', sub:'Posts educativos · saúde bucal',         pages:range(37,39).concat(range(1,7).map(function(n){ return 'kd'+n; })), h:300, r:null},
+    {nome:'Conexão Express',      sub:'Transporte e entregas · feed',           pages:range(1,11).map(function(n){ return 'cx'+n; }), h:480, r:'4/5'},
+    {nome:'Thiago Donizeti',       sub:'Treino e vida saudável · feed',          pages:range(1,9).map(function(n){ return 'th'+n; }), h:480, r:'4/5'},
+    {nome:'Áurea Odontologia',     sub:'Odontologia · feed',                     pages:range(1,6).map(function(n){ return 'au'+n; }), h:480, r:'4/5'},
+    {nome:'Vênus Conceito',       sub:'Moda e looks · feed',                    pages:['venus',9,10].concat(range(1,7).map(function(n){ return 'vn'+n; })), h:480, r:'4/5', obj:true}
+  ];
+  var fotoGroups = [
+    {nome:'Fotos', sub:'Ensaios, retratos, produtos e rotina odontológica', pages:range(1,22).map(function(n){ return 'foto'+n; }).concat(range(1,8).map(function(n){ return 'fa'+n; })), h:540, r:'4/5', unit:'fotos', item:'Foto'}
+  ];
+
+  function makeCarousel(root, groups){
+    var tabs = root.querySelector('.tabs'), track = root.querySelector('.track');
+    var capT = root.querySelector('.capT'), capC = root.querySelector('.capC');
+    var barI = root.querySelector('.barI'), prev = root.querySelector('.prev'), next = root.querySelector('.next');
+    var obj = root.querySelector('.floatpost');
+    var cur = 0, items = [];
+
+    if (tabs){
+      tabs.innerHTML = groups.map(function(g,i){
+        return '<button class="tab" role="tab" data-i="'+i+'" aria-selected="'+(i===0)+'">'+g.nome+' <em>'+g.pages.length+'</em></button>';
+      }).join('');
+      tabs.addEventListener('click', function(e){ var b = e.target.closest('.tab'); if(b) render(+b.dataset.i); });
+    }
+
+    function render(i){
+      cur = i; var g = groups[i], item = g.item || 'Post';
+      if (tabs) tabs.querySelectorAll('.tab').forEach(function(b,k){ b.setAttribute('aria-selected', k===i); });
+      capT.innerHTML = '<b>'+g.nome+'</b> · '+g.sub;
+      capC.textContent = g.pages.length + ' ' + (g.unit || 'posts');
+      if (obj) obj.hidden = !g.obj;
+      track.innerHTML = g.pages.map(function(p,k){
+        var r = g.r || RATIO[p];
+        return '<button class="item" data-k="'+k+'" style="--h:'+g.h+'px;--r:'+r+'" aria-label="Abrir '+item.toLowerCase()+' '+(k+1)+' de '+g.nome+'"><img src="'+src(p)+'" alt="'+item+' '+(k+1)+' de '+g.nome+'" loading="lazy" draggable="false"></button>';
+      }).join('');
+      items = Array.prototype.slice.call(track.children);
+      track.scrollLeft = 0;
+      update();
+    }
+
+    function update(){
+      var tr = track.getBoundingClientRect(), mid = tr.left + tr.width/2;
+      items.forEach(function(el){
+        var r = el.getBoundingClientRect(), d = ((r.left + r.width/2) - mid) / (tr.width/2);
+        d = Math.max(-1.4, Math.min(1.4, d));
+        if (reduce){ el.style.transform=''; return; }
+        el.style.transform = 'perspective(1000px) rotateY('+(-d*20).toFixed(1)+'deg) scale('+(1-Math.min(Math.abs(d),1)*0.1).toFixed(3)+')';
+        el.style.zIndex = String(10 - Math.round(Math.abs(d)*4));
+      });
+      var max = track.scrollWidth - track.clientWidth, p = max>0 ? track.scrollLeft/max : 0;
+      var w = Math.max(.12, track.clientWidth/track.scrollWidth);
+      barI.style.width = (w*100)+'%';
+      barI.style.transform = 'translateX('+(p*(1/w-1)*100)+'%)';
+      prev.disabled = track.scrollLeft < 4;
+      next.disabled = track.scrollLeft > max - 4;
+    }
+    var tick = 0;
+    track.addEventListener('scroll', function(){ if(!tick) tick = requestAnimationFrame(function(){ tick=0; update(); }); }, {passive:true});
+    window.addEventListener('resize', update);
+    prev.addEventListener('click', function(){ track.scrollBy({left:-track.clientWidth*0.7, behavior: reduce?'auto':'smooth'}); });
+    next.addEventListener('click', function(){ track.scrollBy({left: track.clientWidth*0.7, behavior: reduce?'auto':'smooth'}); });
+
+    /* arrastar com o mouse */
+    var down=false, sx=0, sl=0, moved=false;
+    track.addEventListener('pointerdown', function(e){
+      if(e.pointerType!=='mouse') return;
+      down=true; moved=false; sx=e.clientX; sl=track.scrollLeft;
+    });
+    window.addEventListener('pointermove', function(e){
+      if(!down) return;
+      var dx = e.clientX - sx;
+      if(Math.abs(dx)>5){ moved=true; track.classList.add('drag'); }
+      if(moved) track.scrollLeft = sl - dx;
+    });
+    window.addEventListener('pointerup', function(){
+      if(!down) return; down=false;
+      if(moved){
+        track.classList.remove('drag');
+        var best=null, bd=1e9, tl=track.getBoundingClientRect().left;
+        items.forEach(function(el){ var d=Math.abs(el.getBoundingClientRect().left - tl - 16); if(d<bd){bd=d;best=el;} });
+        if(best) track.scrollBy({left: best.getBoundingClientRect().left - tl - 16, behavior:'smooth'});
+      }
+    });
+    track.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ next.click(); e.preventDefault(); }
+      if(e.key==='ArrowLeft'){ prev.click(); e.preventDefault(); }
+    });
+    track.addEventListener('click', function(e){
+      if(moved){ moved=false; return; }
+      var b=e.target.closest('.item'); if(!b) return;
+      var g=groups[cur], item=g.item||'Post';
+      openLB(g.pages.map(function(p,k){ return {src:src(p), alt:item+' '+(k+1)+' de '+g.nome, cap:g.nome.toUpperCase()}; }), +b.dataset.k);
+    });
+    render(0);
+  }
+  makeCarousel(document.getElementById('social'), socialGroups);
+  makeCarousel(document.getElementById('fotos'), fotoGroups);
+
+  /* ---------- copiar número ---------- */
+  var cp=document.getElementById('copy');
+  cp.addEventListener('click', function(){
+    var done=function(){ cp.textContent='Número copiado'; setTimeout(function(){cp.textContent='Copiar número';},1800); };
+    try{ navigator.clipboard.writeText('11 99339-9603').then(done,function(){}); }catch(err){}
+  });
+
+})();
+</script>
+
+</body></html>
